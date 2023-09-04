@@ -36,7 +36,6 @@ jobs:
           REMOTE_PORT: ${{ secrets.PORT }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           ARGS: -avz --delete --exclude='*.env' --exclude='runtime/'
-          FOLDER: ./
           REMOTE_USER: ${{ secrets.USERNAME }}
      #     password: ${{ secrets.PASSWORD }}
           source: './'
