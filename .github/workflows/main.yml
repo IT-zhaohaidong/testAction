@@ -32,7 +32,7 @@ jobs:
       - name: Deploy to server
         uses: easingthemes/ssh-deploy@v2
         with:
-          REMOTE_HOST: ${{ secrets.SERVER }}
+          REMOTE_HOST: ${{ secrets.HOST }}
           REMOTE_PORT: ${{ secrets.PORT }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           ARGS: -avz --delete --exclude='*.env' --exclude='runtime/'
