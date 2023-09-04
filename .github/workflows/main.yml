@@ -31,12 +31,13 @@ jobs:
 
       - name: Deploy to server
         uses: easingthemes/ssh-deploy@v2
-        env:
-          server: ${{ secrets.SERVER }}
-          port: ${{ secrets.PORT }}
+        with:
+          REMOTE_HOST: ${{ secrets.SERVER }}
+          REMOTE_PORT: ${{ secrets.PORT }}
+          SSH_PRIVATE_KEY:${{ secrets.SSH_PRIVATE_KEY }}
           ARGS: -avz --delete --exclude='*.env' --exclude='runtime/'
           FOLDER: ./
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+     #     password: ${{ secrets.PASSWORD }}
           source: './'
           target: 'data/lingfeng/testAction'
