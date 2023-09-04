@@ -30,7 +30,7 @@ jobs:
      #   run: composer build
 
       - name: Deploy to server
-        uses: AEnterprise/rsync-deploy@v1.0
+        uses: easingthemes/ssh-deploy@v2
         env:
           server: ${{ secrets.SERVER }}
           port: ${{ secrets.PORT }}
