@@ -1,0 +1,35 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.2'
+
+    #  - name: Install dependencies
+    #    run: composer install
+
+    #  - name: Run tests
+    #    run: composer test
+
+    #  - name: Build application
+     #   run: composer build
+
+      - name: Deploy to server
+        uses: easingthemes/ssh-deploy@v2
+        with:
+          server: ${{ secrets.SERVER }}
+          port: ${{ secrets.PORT }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          source: 'dist/'
+          target: 'data/lingfeng/testAction'
