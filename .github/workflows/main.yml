@@ -27,7 +27,7 @@ jobs:
     #    run: composer test
 
     #  - name: Build application
-     #   run : composer build 12
+     #   run : composer build
 
       - name: Deploy to server
         uses: easingthemes/ssh-deploy@v2
