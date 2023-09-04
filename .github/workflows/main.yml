@@ -1,7 +1,12 @@
 name: CI
 
-on: [push]
-
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - .idea/
+      - LICENSE
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,11 +30,13 @@ jobs:
      #   run: composer build
 
       - name: Deploy to server
-        uses: easingthemes/ssh-deploy@v2
-        with:
+        uses: AEnterprise/rsync-deploy@v1.0
+        env:
           server: ${{ secrets.SERVER }}
           port: ${{ secrets.PORT }}
+          ARGS: -avz --delete --exclude='*.env' --exclude='runtime/'
+          FOLDER: ./
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          source: 'dist/'
+          source: './'
           target: 'data/lingfeng/testAction'
