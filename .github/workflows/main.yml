@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      #初始化 git
+      #初始化git
       - name: Set up SSH
         run: |
           mkdir -p ~/.ssh/
