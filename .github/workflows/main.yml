@@ -1,43 +1,23 @@
-name: CI
+name: Deploy
 
 on:
   push:
     branches:
       - main
-    paths-ignore:
-      - .idea/
-      - LICENSE
+
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.0
         with:
-          php-version: '7.2'
-
-    #  - name: Install dependencies
-    #    run: composer  install
-
-    #  - name: Run tests
-    #    run: composer test
-
-    #  - name: Build  application
-     #   run : composer build
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Deploy to server
-        uses: easingthemes/ssh-deploy@v2
-        with:
-          REMOTE_HOST: ${{ secrets.HOST }}
-          REMOTE_PORT: ${{ secrets.PORT }}
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-  #        ARGS: -avz --delete --exclude='*.env' --exclude='runtime/'
-          ARGS: -rltgoDzvO --delete --verbose
-          REMOTE_USER: ${{ secrets.USERNAME }}
-     #     password: ${{ secrets.PASSWORD }}
-          source: './'
-          target: '~/data/lingfeng/testAction'
+        run: |
+          ssh root@116.62.234.88 'cd ~/data/lingfeng && bash deploy.sh'
