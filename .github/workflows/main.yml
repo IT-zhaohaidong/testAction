@@ -24,4 +24,4 @@ jobs:
 
       - name: Deploy to server
         run: |
-          ssh root@116.62.234.88 'cd ~/data/lingfeng && bash deploy.sh'
+          ssh root@116.62.234.88 'cd /root/data/lingfeng && bash deploy.sh'
