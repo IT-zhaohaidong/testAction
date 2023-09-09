@@ -22,17 +22,17 @@ jobs:
           eval `ssh-agent -s`
           ssh-add ~/.ssh/id_rsa
 
-   #   - name: Deploy to server
-   #     run: |
-   #       ssh root@116.62.234.88 'cd /root/data/lingfeng && bash deploy.sh'
+      #   - name: Deploy to server
+      #     run: |
+      #       ssh root@116.62.234.88 'cd /root/data/lingfeng && bash deploy.sh'
 
       - name: Deploy
-          uses: easingthemes/ssh-deploy@v2
-          with:
-            ssh_private_key: ${{ secrets.DEPLOY_KEY }}
-            remote_host: ${{ secrets.REMOTE_HOST }}
-            remote_port: ${{ secrets.REMOTE_PORT }}
-            remote_user: ${{ secrets.REMOTE_USER }}
-            local_path: .
-            remote_path: /root/data/lingfeng/testAction
-            args: -rltgoDzvO --delete
+        uses: easingthemes/ssh-deploy@v2
+        with:
+          ssh_private_key: ${{ secrets.DEPLOY_KEY }}
+          remote_host: ${{ secrets.REMOTE_HOST }}
+          remote_port: ${{ secrets.REMOTE_PORT }}
+          remote_user: ${{ secrets.REMOTE_USER }}
+          local_path: .
+          remote_path: /root/data/lingfeng/testAction
+          args: -rltgoDzvO --delete
