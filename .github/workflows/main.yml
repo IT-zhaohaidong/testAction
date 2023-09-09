@@ -29,10 +29,10 @@ jobs:
       - name: Deploy
         uses: easingthemes/ssh-deploy@v2
         with:
-          ssh_private_key: ${{ secrets.DEPLOY_KEY }}
-          remote_host: ${{ secrets.REMOTE_HOST }}
-          remote_port: ${{ secrets.REMOTE_PORT }}
-          remote_user: ${{ secrets.REMOTE_USER }}
-          local_path: .
-          remote_path: /root/data/lingfeng/testAction
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          remote_host: ${{ secrets.HOST }}
+          remote_port: ${{ secrets.PORT_PORT }}
+          remote_user: ${{ secrets.USERNAME }}
+          SOURCE: .
+          TARGET: /root/data/lingfeng/testAction
           args: -rltgoDzvO --delete
