@@ -23,7 +23,6 @@ if (!function_exists('password')) {
      */
     function password($value)
     {
-
         $value = sha1('blog_') . md5($value) . md5('_encrypt') . sha1($value);
         return sha1($value);
     }
