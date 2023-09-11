@@ -35,4 +35,4 @@ jobs:
           remote_user: ${{ secrets.USERNAME }}
           SOURCE: .
           TARGET: /root/data/lingfeng/testAction
-          args: -rltgoDzvO --delete --exclude=/root/data/lingfeng/testAction/public/upload --exclude=/root/data/lingfeng/testAction/runtime
+          args: --exclude=/root/data/lingfeng/testAction/public/upload --exclude=/root/data/lingfeng/testAction/runtime
