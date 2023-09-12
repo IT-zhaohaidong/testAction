@@ -13,14 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       #初始化git
-      - name: Set up SSH
-        run: |
-          mkdir -p ~/.ssh/
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan 116.62.234.88 >> ~/.ssh/known_hosts
-          eval `ssh-agent -s`
-          ssh-add ~/.ssh/id_rsa
+      #- name: Set up SSH
+      #  run: |
+      #    mkdir -p ~/.ssh/
+      #    echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+       #   chmod 600 ~/.ssh/id_rsa
+       #   ssh-keyscan 116.62.234.88 >> ~/.ssh/known_hosts
+        #  eval `ssh-agent -s`
+        #  ssh-add ~/.ssh/id_rsa
 
       #   - name: Deploy to server
       #     run: |
