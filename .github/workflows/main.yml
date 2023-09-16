@@ -34,5 +34,5 @@ jobs:
           remote_port: ${{ secrets.PORT_PORT }}
           remote_user: ${{ secrets.USERNAME }}
           SOURCE: .
-          TARGET: /root/data/lingfeng/testAction
-          args: --exclude=/root/data/lingfeng/testAction/public/upload --exclude=/root/data/lingfeng/testAction/runtime
+          TARGET: /www/wwwroot/testAction
+          args: --exclude=/www/wwwroot/testAction/public/upload --exclude=/www/wwwroot/testAction/runtime
