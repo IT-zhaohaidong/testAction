@@ -25,6 +25,8 @@ jobs:
       #   - name: Deploy to server
       #     run: |
       #       ssh root@116.62.234.88 'cd /root/data/lingfeng && bash deploy.sh'
+
+      #安装依赖
       - name: Install dependencies
         run: composer install
 
