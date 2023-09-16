@@ -2,22 +2,39 @@
 
 namespace app\test\controller;
 
-use app\index\model\MachineDeviceErrorModel;
-use app\index\model\MachineGoods;
-use app\index\model\MachineOutLogModel;
-use app\index\model\MachineSignalLogModel;
 use Pheanstalk\Pheanstalk;
-use think\Cache;
 use think\Controller;
-use think\Db;
-use function AlibabaCloud\Client\value;
 
-//芯夏
+//队列
 class Queque extends Controller
 {
     public function index()
     {
         $pda = Pheanstalk::create('127.0.0.1');
-        var_dump($pda);
+        $data = [
+            'id' => rand(10000, 99999),
+            'price' => 1.00,
+            'name' => '测试商品'
+        ];
+        $pda->useTube('order')->put(json_encode($data));
+        var_dump($data);
+    }
+
+    public function order()
+    {
+        $pda = Pheanstalk::create('127.0.0.1');
+        while (true) {
+            //获取管道并消费
+            $job = $pda->watch('order')->ignore('default')->reserve();
+            //获取任务id
+//            $id = $job->getId();
+            //获取任务数据
+            $data = $job->getData();
+            trace($data, '获取消费任务');
+            //处理完任务后就删除掉
+            $pda->delete($job);
+            sleep(1);
+        }
+
     }
 }
