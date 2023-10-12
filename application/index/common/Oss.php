@@ -10,7 +10,7 @@ use think\Db;
 class Oss
 {
 //    private $accessKeyId = "LTAI5t5icQYB8e1fAuBsbZ1o";
-//    private $accessKeySecret = "UuUeAd6r1iCR53ODzRJdQxOfIOalV6";
+//    private $accessKeySecret = "UuUeAd6r1iCR53O  DzRJd  QxOfIOalV   6";
 //    private $endpoint = "https://oss-cn-hangzhou.aliyuncs.com";
     // 填写Bucket名称，例如examplebucket。
 //    private $bucket = "fs-manghe";
